@@ -16,7 +16,7 @@ import os
 import re
 import time
 
-import requests
+from curl_cffi import requests
 
 
 # ── Env vars ────────────────────────────────────────────────────────────────
@@ -281,7 +281,7 @@ def upload_to_rumble(video_path: str, metadata: dict) -> str:
         print("[Rumble] Warning: Missing RUMBLE_EMAIL/RUMBLE_PASSWORD. Skipping upload.")
         return ""
 
-    session = requests.Session()
+    session = requests.Session(impersonate="chrome")
     session.headers.update({
         "User-Agent": (
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
