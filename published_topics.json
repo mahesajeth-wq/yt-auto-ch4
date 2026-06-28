@@ -5,8 +5,9 @@
     "How a subtle fatigue crack in train axles led to a silent industry-wide material specification change",
     "5 critical software design flaws that cost millions, not lives",
     "How bridge design evolved from early truss bridges to modern cable-stayed structures, enhancing span and stability.",
-    "How ancient Roman concrete's self-healing properties inspire modern sustainable building materials."
+    "How ancient Roman concrete's self-healing properties inspire modern sustainable building materials.",
+    "How gear trains amplify torque and speed: The mechanical advantage of teeth"
   ],
-  "subcluster_idx": 0,
-  "call_count": 6
+  "subcluster_idx": 1,
+  "call_count": 7
 }
