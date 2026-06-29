@@ -41,6 +41,7 @@ jobs:
         run: |
           python -c '
           import os, asyncio, subprocess, requests, zipfile, io
+          from twikit import Client
           async def main():
               username = os.environ.get("X_USERNAME", "").strip()
               email = os.environ.get("X_EMAIL", "").strip()
@@ -51,8 +52,7 @@ jobs:
               token = os.environ.get("GITHUB_TOKEN", "").strip()
               
               if not username or not password or not email:
-                  print("Missing X credentials. Skipping.")
-                  return
+                  raise ValueError("Missing X credentials.")
 
               downloaded = False
               if target_repo:
@@ -86,15 +86,9 @@ jobs:
 
               if not downloaded:
                   if not yt_url:
-                      print("No YT URL available and artifact download failed. Cannot proceed.")
-                      return
+                      raise FileNotFoundError("No YT URL available and artifact download failed.")
                   print(f"Downloading from YouTube: {yt_url}")
-                  try:
-                      subprocess.run(["yt-dlp", "-o", "output.mp4", "-f", "mp4", "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", yt_url], check=True)
-                      downloaded = True
-                  except Exception as e:
-                      print(f"yt-dlp download failed: {e}")
-                      return
+                  subprocess.run(["yt-dlp", "-o", "output.mp4", "-f", "mp4", "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", yt_url], check=True)
 
               client = Client("en-US")
               if os.path.exists(cookie_file) and os.path.getsize(cookie_file) > 10:
@@ -155,6 +149,7 @@ jobs:
         run: |
           python -c '
           import os, asyncio, subprocess, requests, zipfile, io
+          from twikit import Client
           async def main():
               username = os.environ.get("X_USERNAME", "").strip()
               email = os.environ.get("X_EMAIL", "").strip()
@@ -165,8 +160,7 @@ jobs:
               token = os.environ.get("GITHUB_TOKEN", "").strip()
               
               if not username or not password or not email:
-                  print("Missing X credentials. Skipping.")
-                  return
+                  raise ValueError("Missing X credentials.")
 
               downloaded = False
               if target_repo:
@@ -200,15 +194,9 @@ jobs:
 
               if not downloaded:
                   if not yt_url:
-                      print("No YT URL available and artifact download failed. Cannot proceed.")
-                      return
+                      raise FileNotFoundError("No YT URL available and artifact download failed.")
                   print(f"Downloading from YouTube: {yt_url}")
-                  try:
-                      subprocess.run(["yt-dlp", "-o", "output.mp4", "-f", "mp4", "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", yt_url], check=True)
-                      downloaded = True
-                  except Exception as e:
-                      print(f"yt-dlp download failed: {e}")
-                      return
+                  subprocess.run(["yt-dlp", "-o", "output.mp4", "-f", "mp4", "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", yt_url], check=True)
 
               client = Client("en-US")
               if os.path.exists(cookie_file) and os.path.getsize(cookie_file) > 10:
@@ -269,6 +257,7 @@ jobs:
         run: |
           python -c '
           import os, asyncio, subprocess, requests, zipfile, io
+          from twikit import Client
           async def main():
               username = os.environ.get("X_USERNAME", "").strip()
               email = os.environ.get("X_EMAIL", "").strip()
@@ -279,8 +268,7 @@ jobs:
               token = os.environ.get("GITHUB_TOKEN", "").strip()
               
               if not username or not password or not email:
-                  print("Missing X credentials. Skipping.")
-                  return
+                  raise ValueError("Missing X credentials.")
 
               downloaded = False
               if target_repo:
@@ -314,15 +302,9 @@ jobs:
 
               if not downloaded:
                   if not yt_url:
-                      print("No YT URL available and artifact download failed. Cannot proceed.")
-                      return
+                      raise FileNotFoundError("No YT URL available and artifact download failed.")
                   print(f"Downloading from YouTube: {yt_url}")
-                  try:
-                      subprocess.run(["yt-dlp", "-o", "output.mp4", "-f", "mp4", "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", yt_url], check=True)
-                      downloaded = True
-                  except Exception as e:
-                      print(f"yt-dlp download failed: {e}")
-                      return
+                  subprocess.run(["yt-dlp", "-o", "output.mp4", "-f", "mp4", "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", yt_url], check=True)
 
               client = Client("en-US")
               if os.path.exists(cookie_file) and os.path.getsize(cookie_file) > 10:
@@ -383,6 +365,7 @@ jobs:
         run: |
           python -c '
           import os, asyncio, subprocess, requests, zipfile, io
+          from twikit import Client
           async def main():
               username = os.environ.get("X_USERNAME", "").strip()
               email = os.environ.get("X_EMAIL", "").strip()
@@ -393,8 +376,7 @@ jobs:
               token = os.environ.get("GITHUB_TOKEN", "").strip()
               
               if not username or not password or not email:
-                  print("Missing X credentials. Skipping.")
-                  return
+                  raise ValueError("Missing X credentials.")
 
               downloaded = False
               if target_repo:
@@ -428,15 +410,9 @@ jobs:
 
               if not downloaded:
                   if not yt_url:
-                      print("No YT URL available and artifact download failed. Cannot proceed.")
-                      return
+                      raise FileNotFoundError("No YT URL available and artifact download failed.")
                   print(f"Downloading from YouTube: {yt_url}")
-                  try:
-                      subprocess.run(["yt-dlp", "-o", "output.mp4", "-f", "mp4", "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", yt_url], check=True)
-                      downloaded = True
-                  except Exception as e:
-                      print(f"yt-dlp download failed: {e}")
-                      return
+                  subprocess.run(["yt-dlp", "-o", "output.mp4", "-f", "mp4", "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36", yt_url], check=True)
 
               client = Client("en-US")
               if os.path.exists(cookie_file) and os.path.getsize(cookie_file) > 10:
