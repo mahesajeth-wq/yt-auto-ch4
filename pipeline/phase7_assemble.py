@@ -10,6 +10,18 @@ def get_wav_duration(filepath: str) -> float:
         rate = f.getframerate()
         return frames / float(rate)
 
+def get_video_duration(filepath: str) -> float:
+    cmd = [
+        "ffprobe", "-v", "error",
+        "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        filepath
+    ]
+    try:
+        return float(subprocess.check_output(cmd).decode().strip())
+    except Exception:
+        return 0.0
+
 def assemble_video(broll_files: list[str], tts_files: list[str], captions_ass: str, music_path: str, script: dict, format_type: str) -> str:
     print("Starting video assembly...")
     os.makedirs("output", exist_ok=True)
@@ -26,9 +38,26 @@ def assemble_video(broll_files: list[str], tts_files: list[str], captions_ass: s
         durations.append(duration)
         norm_path = f"output/broll_{i}_norm.mp4"
         
-        print(f"Normalizing segment {i} B-roll to duration {duration:.3f}s...")
+        # Calculate dynamic start offset to skip black screen / intro slides in long videos
+        total_dur = get_video_duration(broll_path)
+        ss_offset = 0.0
+        if total_dur > 30.0:
+            # Skip first 20%, up to 30s
+            ss_offset = min(30.0, total_dur * 0.2)
+        elif total_dur > 15.0:
+            # Skip first 3 seconds
+            ss_offset = 3.0
+        elif total_dur > 8.0:
+            # Skip first 1 second
+            ss_offset = 1.0
+            
+        # Ensure we don't seek past the end of the video
+        if ss_offset + duration > total_dur:
+            ss_offset = max(0.0, total_dur - duration)
+            
+        print(f"Normalizing segment {i} B-roll to duration {duration:.3f}s (offset: {ss_offset:.3f}s, total: {total_dur:.3f}s)...")
         cmd = [
-            "ffmpeg", "-y", "-stream_loop", "-1", "-i", broll_path, "-t", f"{duration:.3f}",
+            "ffmpeg", "-y", "-ss", f"{ss_offset:.3f}", "-stream_loop", "-1", "-i", broll_path, "-t", f"{duration:.3f}",
             "-vf", f"scale={w}:{h}:force_original_aspect_ratio=decrease,pad={w}:{h}:(ow-iw)/2:(oh-ih)/2,eq=contrast=1.05:saturation=1.1:gamma=0.95,setsar=1",
             "-r", "30", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-an", norm_path
         ]
@@ -157,7 +186,7 @@ def assemble_video(broll_files: list[str], tts_files: list[str], captions_ass: s
         "-i", assembled_flashed_path,
         "-i", tts_combined_path,
         "-i", music_path,
-        "-i", sfx_track_path,           # ← NEW: 4th input
+        "-i", sfx_track_path,
         "-filter_complex", filter_complex,
         "-map", "0:v",
         "-map", "[audio_final]",
