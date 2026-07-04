@@ -28,10 +28,9 @@ def select_topic(format_type: str) -> dict:
 
     if is_trending:
         topic_instruction = (
-            f"Generate topics about recently TRENDING engineering achievements, breakthroughs, newly uncovered details "
-            f"about recent infrastructure saves/failures in the news, or engineering topics currently trending in science and tech news this week. "
-            f"Focus area: {current_subcluster}. "
-            f"Each topic must be a documented, verified fact. Frame as a fascinating topic that is currently trending or in the news."
+            f"Use Google Search to find current HIGHLY VIRAL news from the last 24-48 hours about {current_subcluster}. "
+            f"Generate 5 TRENDING topics that are currently exploding on social media or making massive news. "
+            f"Frame each as a timely, highly intriguing analysis."
         )
     else:
         topic_instruction = (

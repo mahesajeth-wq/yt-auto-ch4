@@ -41,12 +41,12 @@ def generate_script(topic: dict, format_type: str) -> dict:
 Use the following hook concept as your core theme: "{hook_formatted}" (short hook: "{topic.get('short_hook', '')}").
 
 Narration Style Requirements:
-1. Pacing & Punchiness: Every single sentence must be extremely short, sharp, and high-impact (5 to 10 words MAXIMUM per segment's narration). Avoid long clauses or passive language.
-2. Conversational & Simple Language: Use very simple, easy-to-understand, and highly relatable words that anyone can easily follow. Avoid obscure, complex, or overly difficult English vocabulary. Keep the narration friendly, extremely engaging, and relatable—like a friend explaining an amazing fact.
+1. Pacing & Punchiness: 5 to 15 words per segment's narration. CRITICAL: NEVER split a single sentence across multiple segments! Each segment MUST contain 1 or 2 complete, self-contained sentences. If you split a sentence, the voiceover will pause awkwardly mid-sentence.
+2. Conversational & Extreme Simplicity: Use ONLY 5th-grade vocabulary. Extremely simple words, no complex grammar, no SAT words. Must be so simple a 10-year-old understands instantly.
 3. Engaging Tone: The voiceover narration must be conversational, highly engaging, and relatable—like a friend telling an exciting story. Write the voiceover to be energetic, warm, and inviting.
 2. Hook/Pattern Interrupt: Segment 1 must immediately shatter the viewer's attention. Start mid-consequence, not mid-setup. DO NOT use introductory filler like "Did you know..." or "Have you ever wondered...". Go straight to the verifiable outcome in under 8 words.
-3. Emotional/Sensory Triggers: Use strong, dramatic verbs and adjectives (e.g., "shattered", "forged", "betrayed", "banned", "secret", "exposed", "deciphered").
-4. No Fluff: Get straight to the documented historical facts. Every word must justify its existence.
+4. Emotional/Sensory Triggers: Use strong, dramatic verbs and adjectives (e.g., "shattered", "forged", "betrayed", "banned", "secret", "exposed", "deciphered").
+5. No Fluff: Get straight to the documented historical facts. Every word must justify its existence.
 
 For every `broll_query` field, write a SHORT, SPECIFIC, STOCK-FOOTAGE-FRIENDLY
 search term of 3-6 words MAXIMUM. Write exactly what a human would type into
@@ -82,7 +82,7 @@ You MUST return your response ONLY as a raw JSON object with no markdown syntax.
   "segments": [
     {{
       "id": 1,
-      "narration": "opening shocking hook sentence - 8 words or less, massive information gap",
+      "narration": "opening shocking hook complete sentence - 12 words or less, massive information gap",
       "broll_query": "{topic['topic']} ancient artifact museum",
       "broll_queries": ["{topic['topic']} ancient artifact museum", "old manuscript archives", "archaeological excavation site"],
       "duration_target": 6
