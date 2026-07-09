@@ -32,8 +32,9 @@
     "How ancient Japanese joinery techniques, using no metal fasteners, inspire modern earthquake-resistant timber frame construction.",
     "How AI's convolutional neural networks precisely predict weld capacity in steel structures.",
     "Why systemic coordination failures are doubling construction project delays, and how AI-driven platforms offer a fix.",
-    "How silent sonar scans prevented a catastrophic bridge scour collapse and reinforced foundations"
+    "How silent sonar scans prevented a catastrophic bridge scour collapse and reinforced foundations",
+    "How a single faulty software update from CrowdStrike paralyzed global infrastructure, grounding flights and disrupting emergency services, highlighting critical systemic vulnerabilities."
   ],
-  "subcluster_idx": 3,
-  "call_count": 33
+  "subcluster_idx": 4,
+  "call_count": 34
 }
