@@ -33,8 +33,9 @@
     "How AI's convolutional neural networks precisely predict weld capacity in steel structures.",
     "Why systemic coordination failures are doubling construction project delays, and how AI-driven platforms offer a fix.",
     "How silent sonar scans prevented a catastrophic bridge scour collapse and reinforced foundations",
-    "How a single faulty software update from CrowdStrike paralyzed global infrastructure, grounding flights and disrupting emergency services, highlighting critical systemic vulnerabilities."
+    "How a single faulty software update from CrowdStrike paralyzed global infrastructure, grounding flights and disrupting emergency services, highlighting critical systemic vulnerabilities.",
+    "Spacecraft Redesign for Debris Mitigation: How End-of-Life Behavior is Revolutionizing Orbital Engineering"
   ],
-  "subcluster_idx": 4,
-  "call_count": 34
+  "subcluster_idx": 5,
+  "call_count": 35
 }
