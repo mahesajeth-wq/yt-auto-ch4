@@ -15,19 +15,19 @@
     "status": "daily_exhausted"
   },
   "3": {
-    "cooldown_until": 0.0,
-    "failures": 0,
-    "status": "active"
+    "cooldown_until": 1783843200.0,
+    "failures": 4,
+    "status": "daily_exhausted"
   },
   "4": {
-    "cooldown_until": 0.0,
+    "cooldown_until": 1783843200.0,
     "failures": 4,
     "status": "daily_exhausted"
   },
   "5": {
     "cooldown_until": 0.0,
-    "failures": 4,
-    "status": "daily_exhausted"
+    "failures": 0,
+    "status": "active"
   },
   "6": {
     "cooldown_until": 0.0,
